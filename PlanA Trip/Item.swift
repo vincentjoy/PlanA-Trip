@@ -1,10 +1,3 @@
-//
-//  Item.swift
-//  PlanA Trip
-//
-//  Created by Vincent Joy on 29/10/24.
-//
-
 import Foundation
 import SwiftData
 

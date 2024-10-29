@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  PlanA Trip
-//
-//  Created by Vincent Joy on 29/10/24.
-//
-
 import SwiftUI
 import SwiftData
 
