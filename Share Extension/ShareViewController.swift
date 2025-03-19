@@ -7,50 +7,53 @@
 
 import UIKit
 import Social
+import MobileCoreServices
+import UniformTypeIdentifiers
 
 class ShareViewController: SLComposeServiceViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Access the first item provided to the share extension
-        if let item = self.extensionContext?.inputItems.first as? NSExtensionItem {
-            for attachment in item.attachments ?? [] {
-                if attachment.hasItemConformingToTypeIdentifier("public.text") {
-                    attachment.loadItem(forTypeIdentifier: "public.text", options: nil) { (text, error) in
-                        if let sharedText = text as? String {
-                            // Handle shared text
-                            print("Shared Text: \(sharedText)")
-                        }
-                    }
-                } else if attachment.hasItemConformingToTypeIdentifier("public.image") {
-                    attachment.loadItem(forTypeIdentifier: "public.image", options: nil) { (image, error) in
-                        if let sharedImage = image as? UIImage {
-                            // Handle shared image
-                            print("Shared Image: \(sharedImage)")
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
     override func isContentValid() -> Bool {
-        // Do validation of contentText and/or NSExtensionContext attachments here
+        // Validate content here
         return true
     }
 
     override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
+        guard let extensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
+              let itemProvider = extensionItem.attachments?.first else {
+            self.extensionContext?.completeRequest(returningItems: nil)
+            return
+        }
+        
+        if itemProvider.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
+            handleURL(itemProvider: itemProvider)
+        } else if itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
+            handleImage(itemProvider: itemProvider)
+        } else if itemProvider.hasItemConformingToTypeIdentifier(UTType.plainText.identifier) {
+            handleText(itemProvider: itemProvider)
+        }
+    }
     
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+    private func handleURL(itemProvider: NSItemProvider) {
+        itemProvider.loadItem(forTypeIdentifier: UTType.url.identifier) { (item, error) in
+            guard let url = item as? URL else { return }
+            // Handle the URL (save to app group container or process)
+            self.extensionContext?.completeRequest(returningItems: nil)
+        }
     }
-
-    override func configurationItems() -> [Any]! {
-        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        return []
+    
+    private func handleImage(itemProvider: NSItemProvider) {
+        itemProvider.loadItem(forTypeIdentifier: UTType.image.identifier) { (item, error) in
+            guard let imageURL = item as? URL else { return }
+            // Handle image (save to shared container or process)
+            self.extensionContext?.completeRequest(returningItems: nil)
+        }
     }
-
+    
+    private func handleText(itemProvider: NSItemProvider) {
+        itemProvider.loadItem(forTypeIdentifier: UTType.plainText.identifier) { (item, error) in
+            guard let text = item as? String else { return }
+            // Handle text
+            self.extensionContext?.completeRequest(returningItems: nil)
+        }
+    }
 }
