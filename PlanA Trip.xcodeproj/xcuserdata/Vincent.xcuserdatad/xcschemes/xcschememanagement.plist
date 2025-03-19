@@ -12,31 +12,10 @@
 		<key>Share Extension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>BF0E805D2CD134D3007DD7BE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BF0E806F2CD134D4007DD7BE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BF0E80792CD134D4007DD7BE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BF0E80902CD13C15007DD7BE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
