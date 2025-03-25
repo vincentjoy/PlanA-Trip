@@ -63,11 +63,21 @@
 			);
 			target = BF0E80902CD13C15007DD7BE /* Share Extension */;
 		};
+		BF1EAE6A2D92FD4600930EBE /* Exceptions for "PlanA Trip" folder in "Share Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+			);
+			target = BF0E80902CD13C15007DD7BE /* Share Extension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BF0E80602CD134D3007DD7BE /* PlanA Trip */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BF1EAE6A2D92FD4600930EBE /* Exceptions for "PlanA Trip" folder in "Share Extension" target */,
+			);
 			path = "PlanA Trip";
 			sourceTree = "<group>";
 		};

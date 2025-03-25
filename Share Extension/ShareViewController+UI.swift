@@ -143,8 +143,8 @@ extension ShareViewController {
             sourceLabel.topAnchor.constraint(equalTo: flightCardView.bottomAnchor, constant: 16),
             sourceLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             
-            skyscannerLogoImageView.leadingAnchor.constraint(equalTo: sourceLabel.trailingAnchor, constant: 8),
-            skyscannerLogoImageView.centerYAnchor.constraint(equalTo: sourceLabel.centerYAnchor),
+            skyscannerLogoImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            skyscannerLogoImageView.topAnchor.constraint(equalTo: sourceLabel.bottomAnchor, constant: 8),
             skyscannerLogoImageView.widthAnchor.constraint(equalToConstant: 120),
             skyscannerLogoImageView.heightAnchor.constraint(equalToConstant: 24)
         ])
@@ -156,7 +156,7 @@ extension ShareViewController {
         NSLayoutConstraint.activate([
             saveButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             saveButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            saveButton.topAnchor.constraint(equalTo: sourceLabel.bottomAnchor, constant: 40),
+            saveButton.topAnchor.constraint(equalTo: skyscannerLogoImageView.bottomAnchor, constant: 40),
             saveButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }

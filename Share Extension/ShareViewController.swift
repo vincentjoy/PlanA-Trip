@@ -57,10 +57,14 @@ class ShareViewController: UIViewController {
     lazy var flightCardView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderColor = UIColor.black.cgColor
         view.layer.borderWidth = 1
-        view.layer.cornerRadius = 8
-        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowRadius = 5.0
+        view.layer.masksToBounds = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -68,7 +72,7 @@ class ShareViewController: UIViewController {
     lazy var airlineLogoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "oman_air_logo")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -85,6 +89,7 @@ class ShareViewController: UIViewController {
     lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.text = "₹10,183"
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -94,6 +99,7 @@ class ShareViewController: UIViewController {
     lazy var departureTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "15:30"
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -131,6 +137,7 @@ class ShareViewController: UIViewController {
     lazy var arrivalTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "17:35"
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -164,12 +171,15 @@ class ShareViewController: UIViewController {
     }()
     
     lazy var saveButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button = UIButton(type: .custom)
         button.setTitle("SAVE TO MY TRIP", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        button.backgroundColor = UIColor(red: 0.93, green: 0.53, blue: 0.31, alpha: 1.0)
-        button.layer.cornerRadius = 8
+        button.backgroundColor = UIColor(red: 205/255, green: 133/255, blue: 63/255, alpha: 1.0)
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 1.0
+        button.layer.cornerRadius = 16
+        button.layer.maskedCorners = [.layerMaxXMinYCorner]
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         return button
