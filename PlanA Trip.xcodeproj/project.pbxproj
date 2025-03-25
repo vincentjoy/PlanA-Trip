@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BF0E809B2CD13C15007DD7BE /* Share Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BF0E80912CD13C15007DD7BE /* Share Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF1EAE702D93069600930EBE /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = BF1EAE6F2D93069600930EBE /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1EAE702D93069600930EBE /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +142,7 @@
 				BF0E80732CD134D4007DD7BE /* PlanA TripTests */,
 				BF0E807D2CD134D4007DD7BE /* PlanA TripUITests */,
 				BF0E80922CD13C15007DD7BE /* Share Extension */,
+				BF1EAE6E2D93069600930EBE /* Frameworks */,
 				BF0E805F2CD134D3007DD7BE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -153,6 +156,13 @@
 				BF0E80912CD13C15007DD7BE /* Share Extension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BF1EAE6E2D93069600930EBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +255,7 @@
 			);
 			name = "Share Extension";
 			packageProductDependencies = (
+				BF1EAE6F2D93069600930EBE /* SwiftSoup */,
 			);
 			productName = "Share Extension";
 			productReference = BF0E80912CD13C15007DD7BE /* Share Extension.appex */;
@@ -285,6 +296,9 @@
 			);
 			mainGroup = BF0E80552CD134D3007DD7BE;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BF1EAE6D2D93066000930EBE /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BF0E805F2CD134D3007DD7BE /* Products */;
 			projectDirPath = "";
@@ -638,6 +652,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Share Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Share Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = NSAppTransportSecurity;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -665,6 +680,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Share Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Share Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = NSAppTransportSecurity;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -731,6 +747,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF1EAE6D2D93066000930EBE /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF1EAE6F2D93069600930EBE /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF1EAE6D2D93066000930EBE /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF0E80562CD134D3007DD7BE /* Project object */;
 }

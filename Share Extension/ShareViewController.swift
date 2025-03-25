@@ -202,9 +202,23 @@ class ShareViewController: UIViewController {
         
         if itemProvider.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
             itemProvider.loadItem(forTypeIdentifier: UTType.url.identifier) { [weak self] item, _ in
-                guard let self, let url = item as? URL else { return }
+                guard let self, let websiteURL = item as? URL else { return }
                 
-                print("URL is - \(url)")
+                WebsiteMetadataFetcher.fetchMetadata(from: websiteURL) { (metadata, error) in
+                    if let error = error {
+                        print("Error fetching metadata: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    if let metadata = metadata {
+                        print("Title: \(metadata.title ?? "N/A")")
+                        print("Description: \(metadata.description ?? "N/A")")
+                        print("OG Title: \(metadata.ogTitle ?? "N/A")")
+                        print("OG Description: \(metadata.ogDescription ?? "N/A")")
+                        print("OG Image: \(metadata.ogImage ?? "N/A")")
+                        print("Favicon: \(metadata.favicon ?? "N/A")")
+                    }
+                }
                 
                 DispatchQueue.main.async {
                     // Add logic to parse URL and update UI accordingly
